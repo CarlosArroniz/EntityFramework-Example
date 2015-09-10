@@ -1,0 +1,60 @@
+﻿@model EF.USER
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>USER</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_USER)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID_USER)
+            @Html.ValidationMessageFor(model => model.ID_USER)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NAME)
+            @Html.ValidationMessageFor(model => model.NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LASTNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LASTNAME)
+            @Html.ValidationMessageFor(model => model.LASTNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROLE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROLE)
+            @Html.ValidationMessageFor(model => model.ROLE)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

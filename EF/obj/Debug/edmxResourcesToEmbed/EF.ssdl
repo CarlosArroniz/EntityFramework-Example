@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ToDoListModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TASKS">
+    <Key>
+      <PropertyRef Name="ID_TASK" />
+    </Key>
+    <Property Name="ID_TASK" Type="smallint" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="50" />
+    <Property Name="USER" Type="smallint" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" />
+    <Property Name="LASTNAME" Type="varchar" MaxLength="50" />
+    <Property Name="ROLE" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_TASKS_USERS">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="TASKS" Type="Self.TASKS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="TASKS">
+        <PropertyRef Name="USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ToDoListModelStoreContainer">
+    <EntitySet Name="TASKS" EntityType="Self.TASKS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TASKS_USERS" Association="Self.FK_TASKS_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="TASKS" EntitySet="TASKS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

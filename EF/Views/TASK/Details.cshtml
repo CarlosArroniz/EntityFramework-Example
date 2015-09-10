@@ -1,0 +1,43 @@
+﻿@model EF.TASK
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TASK</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_TASK)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_TASK)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DESCRIPTION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DESCRIPTION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USER1.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USER1.NAME)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
